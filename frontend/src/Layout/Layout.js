@@ -1,30 +1,20 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import Header from "./Header";
-import { listDecks } from "../utils/api";
+import Routes from "./Routes";
 
 export default function Layout() {
-  const [decks, updateDecks] = useState([]);
-
-  // loads all existent decks upon first render
-  useEffect(()=>{
-    const abortController = new AbortController();
-
-    async function getDecks(){
-      await listDecks().then(updateDecks);
-      
-    }
-    getDecks();
-
-    return () => abortController.abort()
-  }, []);
-
-  console.log(decks)
-
-
   return (
-    <div className="container">
-      <Header />
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-12">
+          <Header />
+        </div>
+      </div>
+      <div className="row">
+        <div classNmae="col-12">
+          <Routes />
+        </div>
+      </div>
     </div>
   );
 }
-
