@@ -1,0 +1,183 @@
+{
+  "decks": [
+    {
+      "id": 1,
+      "name": "Rendering",
+      "description": "bloop"
+    },
+    {
+      "name": "React Router",
+      "description": "React Router is a collection of navigational components that compose declaratively with your application.",
+      "id": 2
+    },
+    {
+      "name": "v1.0.0.0",
+      "description": "Modified!",
+      "id": 3
+    },
+    {
+      "name": "A new deck",
+      "description": "yayayayaya",
+      "id": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "front": "Differentiate between various things",
+      "back": "this is a first example!",
+      "deckId": 1
+    },
+    {
+      "id": 2,
+      "front": "How do you modify the state of a different React component?",
+      "back": "Not at all! State is visible to the component only.",
+      "deckId": 1
+    },
+    {
+      "id": 3,
+      "front": "How do you pass data 'down' to a React child component?",
+      "back": "As properties or props",
+      "deckId": 1
+    },
+    {
+      "front": "What does <Switch> do?",
+      "back": "Renders the first matching child <Route> ",
+      "deckId": 2,
+      "id": 5
+    },
+    {
+      "cards": [],
+      "front": "b",
+      "back": "b",
+      "deckId": 1,
+      "id": 7
+    },
+    {
+      "front": "ff",
+      "back": "ff",
+      "deckId": 1,
+      "id": 8
+    },
+    {
+      "front": "zzz",
+      "back": "zzz",
+      "deckId": 1,
+      "id": 9
+    },
+    {
+      "front": "fff",
+      "back": "fff",
+      "deckId": 1,
+      "id": 10
+    },
+    {
+      "front": "aac",
+      "back": "aaac",
+      "deckId": 1,
+      "id": 11
+    },
+    {
+      "front": "ddd",
+      "back": "ddd",
+      "deckId": 1,
+      "id": 12
+    },
+    {
+      "front": "ffa",
+      "back": "aaf",
+      "deckId": 1,
+      "id": 13
+    },
+    {
+      "front": "fadfadfafa",
+      "back": "dfadfaedfa",
+      "deckId": 1,
+      "id": 14
+    },
+    {
+      "front": "fdfadf",
+      "back": "dfadfa",
+      "deckId": 1,
+      "id": 15
+    },
+    {
+      "front": "fdaf",
+      "back": "dfaf",
+      "deckId": 1,
+      "id": 16
+    },
+    {
+      "front": "fdaf",
+      "back": "dfad",
+      "deckId": 1,
+      "id": 17
+    },
+    {
+      "front": "fdfa",
+      "back": "dfaf",
+      "deckId": 1,
+      "id": 18
+    },
+    {
+      "front": "one",
+      "back": "two",
+      "deckId": 1,
+      "id": 19
+    },
+    {
+      "front": "test 1.0.0",
+      "back": "fdafa",
+      "deckId": 1,
+      "id": 21
+    },
+    {
+      "front": "test v1.0.1",
+      "back": "dfaa",
+      "deckId": 1,
+      "id": 22
+    },
+    {
+      "front": "test v1.0.2",
+      "back": "fadfadf",
+      "deckId": 1,
+      "id": 23
+    },
+    {
+      "front": "test v1.0.3",
+      "back": "fdaf",
+      "deckId": 1,
+      "id": 24
+    },
+    {
+      "front": "test v1.0.4",
+      "back": "dfja;fhaf",
+      "deckId": 1,
+      "id": 25
+    },
+    {
+      "front": "front card",
+      "back": "back card",
+      "deckId": 3,
+      "id": 26
+    },
+    {
+      "front": "fdfa",
+      "back": "fda",
+      "deckId": 4,
+      "id": 27
+    },
+    {
+      "front": "fafadf",
+      "back": "afdaf",
+      "deckId": 4,
+      "id": 28
+    },
+    {
+      "front": "dfaf",
+      "back": "fadfa",
+      "deckId": 4,
+      "id": 29
+    }
+  ]
+}
