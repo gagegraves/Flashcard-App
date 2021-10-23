@@ -12,10 +12,12 @@ export default function DeleteBtn({ toDelete, objType, setDecks }) {
       //check what we are deleting
       async function deleteObj() {
         objType === "deck"
-          ? deleteDeck(toDelete)
+          ? deleteDeck(toDelete.deck_id, abortCcontroller.signal)
               .then(() => updateDecks(abortCcontroller))
               .then(() => history.push(""))
-          : deleteCard(toDelete).then(() => updateDecks(abortCcontroller));
+          : deleteCard(toDelete.card_id, abortCcontroller.signal).then(() =>
+              updateDecks(abortCcontroller)
+            );
       }
       deleteObj();
       return () => abortCcontroller.abort(); //clenaup
