@@ -28,7 +28,7 @@ export default function Routes() {
       <Route path="/dashboard">
         <Dashboard decks={decks} setDecks={updateDecks}/>
       </Route>
-      <Route path="/">
+      <Route exact={true} path="/">
         <Redirect to="/dashboard" />
       </Route>
       <Route>
