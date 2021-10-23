@@ -11,7 +11,7 @@ export default function Layout() {
         </div>
       </div>
       <div className="row">
-        <div classNmae="col-12">
+        <div className="col-12">
           <Routes />
         </div>
       </div>
