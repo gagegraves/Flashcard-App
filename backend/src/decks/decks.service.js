@@ -1,14 +1,18 @@
 const knex = require("../db/connection");
 
-function read(deck_id) {
-  return knex("decks")
-    .select("*")
-    .where({ deck_id })
-    .first();
+function findDeck(deck_id) {
+  return knex("decks").select("*").where({ deck_id }).first();
 }
 
 function listDecks() {
   return knex("decks").select("*").returning("*");
+}
+
+function createDeck(deck) {
+  return knex("decks")
+    .insert(deck)
+    .returning("*")
+    .then((createdRecords) => createdRecords[0]);
 }
 
 function deleteDeck(deck_id) {
@@ -16,7 +20,8 @@ function deleteDeck(deck_id) {
 }
 
 module.exports = {
-  read,
+  findDeck,
   listDecks,
-  deleteDeck
+  createDeck,
+  deleteDeck,
 };

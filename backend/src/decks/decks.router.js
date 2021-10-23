@@ -4,6 +4,6 @@ const methodBlock = require("../errors/methodNotAllowed");
 
 router.route("/:deck_id").delete(controller.deleteDeck).all(methodBlock);
 
-router.route("/").get(controller.listDecks).all(methodBlock);
+router.route("/").get(controller.listDecks).post(controller.createDeck).all(methodBlock);
 
 module.exports = router;

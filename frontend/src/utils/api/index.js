@@ -54,7 +54,6 @@ async function fetchJson(url, options, onCancel) {
     }
 
     return await response.json();
-
   } catch (error) {
     if (error.name !== "AbortError") {
       console.error(error.stack);
@@ -86,13 +85,8 @@ export async function listDecks(signal) {
  */
 export async function createDeck(deck, signal) {
   const url = `${API_BASE_URL}/decks`;
-  const options = {
-    method: "POST",
-    headers,
-    body: JSON.stringify(stripCards(deck)),
-    signal,
-  };
-  return await fetchJson(url, options, {});
+  const body = JSON.stringify({ data: deck });
+  return await fetchJson(url, { headers, signal, method: "POST", body }, []);
 }
 
 /**
