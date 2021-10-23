@@ -1,6 +1,9 @@
 const router = require("express").Router();
-const controller = require("./decks.controller")
+const controller = require("./decks.controller");
+const methodBlock = require("../errors/methodNotAllowed");
 
-router.route("/").get(controller.listDecks);
+router.route("/:deck_id").delete(controller.deleteDeck).all(methodBlock);
+
+router.route("/").get(controller.listDecks).all(methodBlock);
 
 module.exports = router;
