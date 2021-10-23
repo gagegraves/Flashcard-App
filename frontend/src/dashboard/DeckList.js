@@ -12,7 +12,7 @@ export default function DeckList({ decks, setDecks }) {
     //map through all decks to create a DeckListItem for each
     setDeckList(
       decks.map((deck) => (
-        <DeckListItem deck={deck} setDecks={setDecks} />
+        <DeckListItem key={deck.deck_id} deck={deck} setDecks={setDecks} />
       ))
     );
   }, [decks, setDecks]);
