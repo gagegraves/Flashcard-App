@@ -1,34 +1,40 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Dashboard from "../dashboard/Dashboard";
 import NotFound from "./NotFound";
+import Decks from "../decks/Decks";
 import { listDecks } from "../utils/api";
 
 export default function Routes() {
-
   const [decks, setDecks] = useState([]);
 
+  // loads all existent decks upon first render
+  useEffect(() => {
+    const abortController = new AbortController();
 
-       // loads all existent decks upon first render
-       useEffect(() => {
-        const abortController = new AbortController();
-    
-        async function getDecks() {
-          await listDecks().then(setDecks);
-        }
-        getDecks();
-    
-        return () => abortController.abort();
-      }, []);
-    
-      console.log(decks);
+    async function loadDecks() {
+      await listDecks(abortController.signal)
+        .then(setDecks)
+        .catch((error) => {
+          if (error.name !== "AbortError") throw error;
+        });
+    }
+
+    loadDecks();
+    return () => abortController.abort();
+  }, []);
+
+  console.log(decks);
 
   return (
     <Switch>
       <Route path="/dashboard">
-        <Dashboard decks={decks} setDecks={setDecks}/>
+        <Dashboard decks={decks} setDecks={setDecks} />
       </Route>
-      <Route exact={true} path="/">
+      <Route path="/decks/">
+        <Decks decks={decks} setDecks={setDecks} />
+      </Route>
+      <Route exact path="/">
         <Redirect to="/dashboard" />
       </Route>
       <Route>
