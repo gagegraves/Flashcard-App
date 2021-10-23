@@ -6,7 +6,7 @@ import { listDecks } from "../utils/api";
 
 export default function Routes() {
 
-  const [decks, updateDecks] = useState([]);
+  const [decks, setDecks] = useState([]);
 
 
        // loads all existent decks upon first render
@@ -14,7 +14,7 @@ export default function Routes() {
         const abortController = new AbortController();
     
         async function getDecks() {
-          await listDecks().then(updateDecks);
+          await listDecks().then(setDecks);
         }
         getDecks();
     
@@ -26,7 +26,7 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/dashboard">
-        <Dashboard decks={decks} setDecks={updateDecks}/>
+        <Dashboard decks={decks} setDecks={setDecks}/>
       </Route>
       <Route exact={true} path="/">
         <Redirect to="/dashboard" />

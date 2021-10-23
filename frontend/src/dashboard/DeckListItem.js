@@ -1,8 +1,9 @@
 import React from "react";
 import StudyBtn from "../common-components/buttons/StudyBtn";
 import ViewDeckBtn from "../common-components/buttons/ViewDeckBtn";
+import DeleteBtn from "../common-components/buttons/DeleteBtn";
 
-export default function DeckListItem({ deck, updateDecks }) {
+export default function DeckListItem({ deck, setDecks }) {
   return (
     <div className="list-group-item">
       <div className="row">
@@ -27,7 +28,7 @@ export default function DeckListItem({ deck, updateDecks }) {
         </div>
 
         <div>
-          {/* <DeleteBtn toDelete={deck} type={"deck"} updateDecks={updateDecks} /> */}
+          <DeleteBtn toDelete={deck} objType={"deck"} setDecks={setDecks} />
         </div>
       </div>
     </div>

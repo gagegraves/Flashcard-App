@@ -3,7 +3,7 @@ import DeckListItem from "./DeckListItem";
 import CreateDeckBtn from "../common-components/buttons/CreateDeckBtn";
 import LoadingMessage from "../common-components/LoadingMessage";
 
-export default function DeckList({ decks, updateDecks }) {
+export default function DeckList({ decks, setDecks }) {
   //stores array of DeckList components
   const [deckList, setDeckList] = useState([]);
 
@@ -12,10 +12,10 @@ export default function DeckList({ decks, updateDecks }) {
     //map through all decks to create a DeckListItem for each
     setDeckList(
       decks.map((deck) => (
-        <DeckListItem deck={deck} updateDecks={updateDecks} />
+        <DeckListItem deck={deck} setDecks={setDecks} />
       ))
     );
-  }, [decks, updateDecks]);
+  }, [decks, setDecks]);
 
   return deckList.length ? (
     <>
