@@ -1,5 +1,6 @@
 import React from "react";
 import StudyBtn from "../common-components/buttons/StudyBtn";
+import ViewDeckBtn from "../common-components/buttons/ViewDeckBtn";
 
 export default function DeckListItem({ deck, updateDecks }) {
   return (
@@ -21,7 +22,7 @@ export default function DeckListItem({ deck, updateDecks }) {
 
       <div className="row justify-content-between px-3">
         <div>
-          {/* <ViewDeckBtn path={`/decks/${deck.deck_id}`} /> */}
+          <ViewDeckBtn path={`/decks/${deck.deck_id}`} />
           <StudyBtn path={`decks/${deck.deck_id}`} />
         </div>
 
