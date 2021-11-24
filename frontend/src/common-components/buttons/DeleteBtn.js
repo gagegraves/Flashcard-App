@@ -7,20 +7,20 @@ export default function DeleteBtn({ toDelete, objType, setDecks }) {
 
   function handleDelete() {
     if (window.confirm(`Delete ${objType}? This cannot be undone.`)) {
-      const abortCcontroller = new AbortController();
+      const abortController = new AbortController();
 
       //check what we are deleting
       async function deleteObj() {
         objType === "deck"
-          ? deleteDeck(toDelete.deck_id, abortCcontroller.signal)
-              .then(() => updateDecks(abortCcontroller))
+          ? deleteDeck(toDelete.deck_id, abortController.signal)
+              .then(() => updateDecks(abortController))
               .then(() => history.push(""))
-          : deleteCard(toDelete.card_id, abortCcontroller.signal).then(() =>
-              updateDecks(abortCcontroller)
+          : deleteCard(toDelete.card_id, abortController.signal).then(() =>
+              updateDecks(abortController)
             );
       }
       deleteObj();
-      return () => abortCcontroller.abort(); //clenaup
+      return () => abortController.abort(); //clenaup
     }
   }
 

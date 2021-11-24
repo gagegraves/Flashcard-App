@@ -11,7 +11,11 @@ export default function DeckListItem({ deck, setDecks }) {
           <h3 className="h3">{deck.deck_name}</h3>
         </div>
         <div className="col">
-          <p className="text-muted">{deck.cards_count} cards</p>
+          {deck.cards_count === 1 ? (
+            <p className="text-muted">{deck.cards_count} card</p>
+          ) : (
+            <p className="text-muted">{deck.cards_count} cards</p>
+          )}
         </div>
       </div>
 
@@ -23,7 +27,7 @@ export default function DeckListItem({ deck, setDecks }) {
 
       <div className="row justify-content-between px-3">
         <div>
-          <ViewDeckBtn path={`/decks/${deck.deck_id}`} />
+          <ViewDeckBtn path={`decks/${deck.deck_id}`} />
           <StudyBtn path={`decks/${deck.deck_id}`} />
         </div>
 

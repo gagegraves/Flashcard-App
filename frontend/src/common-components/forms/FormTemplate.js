@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { createDeck, listDecks } from "../../utils/api";
-import FormField from "./FormField"
+import FormField from "./FormField";
 
 export default function FormTemplate({ objType, modifyType, decks, setDecks }) {
   const history = useHistory();
@@ -10,7 +10,8 @@ export default function FormTemplate({ objType, modifyType, decks, setDecks }) {
     deck_desc: "",
   };
   const firstPlaceholder = objType === "Deck" ? "Deck Name" : "Front side";
-  const secondPlaceholder = objType === "Deck" ? "Deck Description" : "Back side";
+  const secondPlaceholder =
+    objType === "Deck" ? "Deck Description" : "Back side";
   const [formData, setFormData] = useState(initialFormState);
 
   function cancelHandler() {
@@ -19,18 +20,18 @@ export default function FormTemplate({ objType, modifyType, decks, setDecks }) {
   }
 
   function formChangeHandler({ target }) {
-      setFormData({
-          ...formData,
-          [target.name]: target.value,
-        });
-        console.log(formData)
+    setFormData({
+      ...formData,
+      [target.name]: target.value,
+    });
+    console.log(formData);
   }
 
   function createDeckSubmitHandler(event) {
     event.preventDefault();
-    const abortCcontroller = new AbortController();
-    createDeck(formData, abortCcontroller.signal).then(
-      updateDecks(abortCcontroller.signal)
+    const abortController = new AbortController();
+    createDeck(formData, abortController.signal).then(() =>
+      updateDecks(abortController.signal)
     );
   }
 
