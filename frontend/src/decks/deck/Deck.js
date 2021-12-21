@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch, useRouteMatch } from "react-router";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import DeckView from "./DeckView";
 import NotFound from "../../layout/NotFound";
 import { findDeck } from "../../utils/api";

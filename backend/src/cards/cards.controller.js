@@ -1,6 +1,5 @@
-const service = require("./decks.service");
+const service = require("./cards.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-
 
 async function validateDataExists(req, res, next) {
   if (!req.body) {
@@ -25,36 +24,17 @@ async function validateDeckId(req, res, next) {
   next();
 }
 
-async function listDecks(req, res, next) {
+async function getCards(req, res, next) {
   await service
-    .listDecks()
+    .getCards(res.locals.deck.deck_id)
     .then((data) => res.json({ data }))
     .catch(next);
 }
 
-async function createDeck(req, res, next) {
-  const deck = req.body;
-  await service
-    .createDeck(deck)
-    .then((data) => res.status(201).json({ data }))
-    .catch(next);
-}
-
-async function deleteDeck(req, res, next) {
-  await service
-    .deleteDeck(res.locals.deck.deck_id)
-    .then(() => res.sendStatus(204))
-    .catch(next);
-}
-
 module.exports = {
-  listDecks: [asyncErrorBoundary(listDecks)],
-  createDeck: [
+  getCards: [
     asyncErrorBoundary(validateDataExists),
-    asyncErrorBoundary(createDeck),
-  ],
-  deleteDeck: [
     asyncErrorBoundary(validateDeckId),
-    asyncErrorBoundary(deleteDeck),
+    asyncErrorBoundary(getCards),
   ],
 };

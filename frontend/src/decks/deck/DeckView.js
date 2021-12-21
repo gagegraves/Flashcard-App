@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouteMatch } from "react-router";
+import { useRouteMatch } from "react-router-dom";
 import { listCards } from "../../utils/api";
 import DeleteBtn from "../../common-components/buttons/DeleteBtn";
 import StudyBtn from "../../common-components/buttons/StudyBtn";
