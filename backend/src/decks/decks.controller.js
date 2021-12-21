@@ -1,7 +1,6 @@
 const service = require("./decks.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
-
 async function validateDataExists(req, res, next) {
   if (!req.body) {
     return next({ status: 400, message: "Body is empty." });
@@ -47,6 +46,14 @@ async function deleteDeck(req, res, next) {
     .catch(next);
 }
 
+async function listCards(req, res, next) {
+  const { deck_id } = req.params;
+  await service
+    .listCards(deck_id)
+    .then((data) => res.json({ data }))
+    .catch(next);
+}
+
 module.exports = {
   listDecks: [asyncErrorBoundary(listDecks)],
   createDeck: [
@@ -56,5 +63,9 @@ module.exports = {
   deleteDeck: [
     asyncErrorBoundary(validateDeckId),
     asyncErrorBoundary(deleteDeck),
+  ],
+  listCards: [
+    asyncErrorBoundary(validateDeckId),
+    asyncErrorBoundary(listCards),
   ],
 };

@@ -19,9 +19,13 @@ function deleteDeck(deck_id) {
   return knex("decks").where({ deck_id }).del();
 }
 
+function listCards(deck_id) {
+  return knex("cards").select("*").where({ deck_id });
+}
 module.exports = {
   findDeck,
   listDecks,
   createDeck,
   deleteDeck,
+  listCards,
 };
