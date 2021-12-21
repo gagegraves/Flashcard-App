@@ -6,21 +6,21 @@ import StudyBtn from "../../common-components/buttons/StudyBtn";
 import LoadingMessage from "../../common-components/LoadingMessage";
 
 export default function DeckView({ deck, setDecks }) {
-  const { url } = useRouteMatch(); //grab url for button paths
-
+  const { url } = useRouteMatch(); //current url path
+  
   //state variable array of all cards in the current deck
   const [cards, setCards] = useState([]);
-
+  
   useEffect(() => {
     const abortController = new AbortController();
     async function loadCards() {
       listCards(deck.deck_id, abortController.signal)
-        .then(setCards)
-        .catch((error) => {
-          if (error.name !== "AbortError") throw error;
-        });
+      .then(setCards)
+      .catch((error) => {
+        if (error.name !== "AbortError") throw error;
+      });
     }
-
+    
     loadCards();
     return () => abortController.abort();
   }, [deck.deck_id]);

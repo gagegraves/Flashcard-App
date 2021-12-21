@@ -6,10 +6,11 @@ import { findDeck } from "../../utils/api";
 
 export default function Deck({ decks, setDecks }) {
   const {
-    path,
-    params: { deck_id },
+    path, //this is the current URL path
+    params: { deckId }, //deck ID taken from the path
   } = useRouteMatch();
 
+  //"deck" is the state variable storing the current deck object
   const [deck, setDeck] = useState({});
 
   //automatically loads current deck from API upon render
@@ -17,7 +18,7 @@ export default function Deck({ decks, setDecks }) {
     const abortController = new AbortController();
 
     async function loadDeck() {
-      findDeck(deck_id, abortController.signal)
+      findDeck(deckId, abortController.signal)
         .then(setDeck)
         .catch((error) => {
           if (error.name !== "AbortError") throw error;
@@ -25,8 +26,8 @@ export default function Deck({ decks, setDecks }) {
     }
 
     loadDeck();
-    return () => abortController.abort(); //cleanup
-  }, [deck_id, decks]);
+    return () => abortController.abort(); //useEffect cleanup
+  }, [deckId, decks]);
 
   return (
     <>

@@ -7,9 +7,9 @@ export default function DeckList({ decks, setDecks }) {
   //stores array of DeckList components
   const [deckList, setDeckList] = useState([]);
 
-  //update decklist when decks or updateDecks changes
+  //update decklist when decks or seteDecks changes
   useEffect(() => {
-    //map through all decks to create a DeckListItem for each
+    //map through all decks returned by api to create a DeckListItem for each
     setDeckList(
       decks.map((deck) => (
         <DeckListItem key={deck.deck_id} deck={deck} setDecks={setDecks} />
@@ -22,6 +22,7 @@ export default function DeckList({ decks, setDecks }) {
       <CreateDeckBtn />
       <div className="list-group">{deckList}</div>
     </>
+    //display a loading animation while no decks are found
   ) : (
     <LoadingMessage />
   );
