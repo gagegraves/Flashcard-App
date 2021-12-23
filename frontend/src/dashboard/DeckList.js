@@ -7,7 +7,7 @@ export default function DeckList({ decks, setDecks }) {
   //stores array of DeckList components
   const [deckList, setDeckList] = useState([]);
 
-  //update decklist when decks or seteDecks changes
+  //update decklist when decks or setDecks changes
   useEffect(() => {
     //map through all decks returned by api to create a DeckListItem for each
     setDeckList(

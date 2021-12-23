@@ -72,7 +72,8 @@ export async function deleteDeck(deckId, signal) {
 
 
 export async function listCards(deckId, signal) {
-  const url = `${API_BASE_URL}/decks/${deckId}/cards`;
+  console.log("file: api.js ~ line 75 ~ deckId", deckId);
+  const url = `${API_BASE_URL}/decks/${deckId}`;
   return await fetchJson(url, { headers, signal, method: "GET" }, [])
 }
 

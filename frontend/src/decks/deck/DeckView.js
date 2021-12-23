@@ -4,6 +4,7 @@ import { listCards } from "../../utils/api";
 import DeleteBtn from "../../common-components/buttons/DeleteBtn";
 import StudyBtn from "../../common-components/buttons/StudyBtn";
 import LoadingMessage from "../../common-components/LoadingMessage";
+import CardList from "./CardList";
 
 export default function DeckView({ deck, setDecks }) {
   const { url } = useRouteMatch(); //current url path
@@ -14,7 +15,7 @@ export default function DeckView({ deck, setDecks }) {
   useEffect(() => {
     const abortController = new AbortController();
     async function loadCards() {
-      listCards(deck.deck_id, abortController.signal)
+       listCards(deck.deck_id, abortController.signal)
       .then(setCards)
       .catch((error) => {
         if (error.name !== "AbortError") throw error;
@@ -43,7 +44,7 @@ export default function DeckView({ deck, setDecks }) {
 
       <h2 className="h2">Cards</h2>
 
-      {/* <CardList cards={cards} setDecks={setDecks} /> */}
+      <CardList cards={cards} setDecks={setDecks} />
     </>
   ) : (
     <LoadingMessage />

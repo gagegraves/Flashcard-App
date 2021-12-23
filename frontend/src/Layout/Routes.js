@@ -24,14 +24,13 @@ export default function Routes() {
     return () => abortController.abort();
   }, []);
 
-  console.log(decks);
 
   return (
     <Switch>
       <Route path="/dashboard">
         <Dashboard decks={decks} setDecks={setDecks} />
       </Route>
-      <Route path="/decks/">
+      <Route path="/decks">
         <Decks decks={decks} setDecks={setDecks} />
       </Route>
       <Route exact path="/">
