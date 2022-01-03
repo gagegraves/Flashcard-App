@@ -12,23 +12,24 @@ export default function Deck({ decks, setDecks }) {
 
   //"deck" is the state variable storing the current deck object
   const [deck, setDeck] = useState({});
-
+  
   //automatically loads current deck from API upon render
   useEffect(() => {
     const abortController = new AbortController();
-
+    
     async function loadDeck() {
       findDeck(deckId, abortController.signal)
-        .then(setDeck)
-        .catch((error) => {
-          if (error.name !== "AbortError") throw error;
-        });
+      .then(setDeck)
+      .catch((error) => {
+        if (error.name !== "AbortError") throw error;
+      });
     }
-
+    
     loadDeck();
     return () => abortController.abort(); //useEffect cleanup
   }, [deckId, decks]);
-
+  
+  console.log("file: Deck.js ~ line 32 ~ deck", deck);
   return (
     <>
       <Switch>
@@ -42,3 +43,5 @@ export default function Deck({ decks, setDecks }) {
     </>
   );
 }
+
+//TODO implement loading screen, find out why DeckView is making a call before it has the deck info!!!

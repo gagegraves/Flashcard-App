@@ -7,24 +7,25 @@ import LoadingMessage from "../../common-components/LoadingMessage";
 import CardList from "./CardList";
 
 export default function DeckView({ deck, setDecks }) {
+  console.log("file: DeckView.js ~ line 10 ~ deck", deck);
   const { url } = useRouteMatch(); //current url path
   
   //state variable array of all cards in the current deck
   const [cards, setCards] = useState([]);
   
-  useEffect(() => {
-    const abortController = new AbortController();
-    async function loadCards() {
-       listCards(deck.deck_id, abortController.signal)
-      .then(setCards)
-      .catch((error) => {
-        if (error.name !== "AbortError") throw error;
-      });
-    }
+  // useEffect(() => {
+  //   const abortController = new AbortController();
+  //   async function loadCards() {
+  //      listCards(deck.deck_id, abortController.signal)
+  //     .then(setCards)
+  //     .catch((error) => {
+  //       if (error.name !== "AbortError") throw error;
+  //     });
+  //   }
     
-    loadCards();
-    return () => abortController.abort();
-  }, [deck.deck_id]);
+  //   loadCards();
+  //   return () => abortController.abort();
+  // }, [deck.deck_id]);
 
   return deck.deck_name && cards ? (
     <>

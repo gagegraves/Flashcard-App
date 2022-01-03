@@ -24,6 +24,13 @@ async function validateDeckId(req, res, next) {
   next();
 }
 
+async function findDeck(req, res, next) {
+  await service
+    .findDeck()
+    .then((data) => res.json({ data }))
+    .catch(next);
+}
+
 async function listDecks(req, res, next) {
   await service
     .listDecks()
@@ -46,15 +53,12 @@ async function deleteDeck(req, res, next) {
     .catch(next);
 }
 
-async function listCards(req, res, next) {
-  const { deck_id } = req.params;
-  await service
-    .listCards(deck_id)
-    .then((data) => res.json({ data }))
-    .catch(next);
-}
-
 module.exports = {
+  findDeck: [
+    asyncErrorBoundary(validateDataExists),
+    asyncErrorBoundary(validateDeckId),
+    asyncErrorBoundary(findDeck),
+  ],
   listDecks: [asyncErrorBoundary(listDecks)],
   createDeck: [
     asyncErrorBoundary(validateDataExists),
@@ -63,9 +67,5 @@ module.exports = {
   deleteDeck: [
     asyncErrorBoundary(validateDeckId),
     asyncErrorBoundary(deleteDeck),
-  ],
-  listCards: [
-    asyncErrorBoundary(validateDeckId),
-    asyncErrorBoundary(listCards),
   ],
 };

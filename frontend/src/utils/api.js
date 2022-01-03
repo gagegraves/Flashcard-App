@@ -49,8 +49,9 @@ export async function createDeck(deck, signal) {
 }
 
 export async function findDeck(deckId, signal) {
+  console.log("file: api.js ~ line 52 ~ deckId", deckId);
   const url = `${API_BASE_URL}/decks/${deckId}`;
-  return await fetchJson(url, { signal }, {});
+  return await fetchJson(url, { headers, signal, method: "GET" }, {});
 }
 
 export async function updateDeck(updatedDeck, signal) {
@@ -70,10 +71,9 @@ export async function deleteDeck(deckId, signal) {
   return await fetchJson(url, options);
 }
 
-
+//returns cards from a deck specified by deckId
 export async function listCards(deckId, signal) {
-  console.log("file: api.js ~ line 75 ~ deckId", deckId);
-  const url = `${API_BASE_URL}/decks/${deckId}`;
+  const url = `${API_BASE_URL}/cards/${deckId}`;
   return await fetchJson(url, { headers, signal, method: "GET" }, [])
 }
 

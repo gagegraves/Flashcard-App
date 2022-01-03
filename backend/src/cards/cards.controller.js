@@ -24,17 +24,17 @@ async function validateDeckId(req, res, next) {
   next();
 }
 
-async function getCards(req, res, next) {
+async function listCards(req, res, next) {
   await service
-    .getCards(res.locals.deck.deck_id)
+    .listCards(res.locals.deck.deck_id)
     .then((data) => res.json({ data }))
     .catch(next);
 }
 
 module.exports = {
-  getCards: [
+  listCards: [
     asyncErrorBoundary(validateDataExists),
     asyncErrorBoundary(validateDeckId),
-    asyncErrorBoundary(getCards),
+    asyncErrorBoundary(listCards),
   ],
 };
